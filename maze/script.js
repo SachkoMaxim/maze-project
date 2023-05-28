@@ -289,3 +289,7 @@ function DrawMaze(Maze, ctx, cellSize, endSprite = null) {
     drawMap();
     drawEndMethod();
 }
+
+function Player(maze, c, _cellsize, onComplete, sprite = null) {
+    
+}
