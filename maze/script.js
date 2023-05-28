@@ -291,5 +291,24 @@ function DrawMaze(Maze, ctx, cellSize, endSprite = null) {
 }
 
 function Player(maze, c, _cellsize, onComplete, sprite = null) {
+    const ctx = c.getContext("2d");
+    let drawSprite;
+    let moves = 0;
+    drawSprite = drawSpriteCircle;
+    if (sprite != null) {
+      drawSprite = drawSpriteImg;
+    }
+    const player = this;
+    const map = maze.map();
+    let cellCoords = {
+      x: maze.startCoord().x,
+      y: maze.startCoord().y
+    };
+    let cellSize = _cellsize;
+    const halfCellSize = cellSize / 2;
     
+    this.redrawPlayer = function (_cellsize) {
+      cellSize = _cellsize;
+      drawSpriteImg(cellCoords);
+    };
 }
