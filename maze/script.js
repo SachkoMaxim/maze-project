@@ -278,5 +278,14 @@ function DrawMaze(Maze, ctx, cellSize, endSprite = null) {
     function clear() {
         const canvasSize = cellSize * map.length;
         ctx.clearRect(0, 0, canvasSize, canvasSize);
-    } 
+    }
+    
+    if (endSprite != null) {
+        drawEndMethod = drawEndSprite;
+    } else {
+        drawEndMethod = drawEndFlag;
+    }
+    clear();
+    drawMap();
+    drawEndMethod();
 }
