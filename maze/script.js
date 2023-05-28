@@ -257,4 +257,21 @@ function DrawMaze(Maze, ctx, cellSize, endSprite = null) {
             }
         }
     }
+
+    function drawEndSprite() {
+        let offsetLeft = cellSize / 50;
+        let offsetRight = cellSize / 25;
+        let coord = Maze.endCoord();
+        ctx.drawImage(
+            endSprite,
+            2,
+            2,
+            endSprite.width,
+            endSprite.height,
+            coord.x * cellSize + offsetLeft,
+            coord.y * cellSize + offsetLeft,
+            cellSize - offsetRight,
+            cellSize - offsetRight
+        );
+    }      
 }
