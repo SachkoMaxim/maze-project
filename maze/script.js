@@ -273,5 +273,10 @@ function DrawMaze(Maze, ctx, cellSize, endSprite = null) {
             cellSize - offsetRight,
             cellSize - offsetRight
         );
-    }      
+    }
+    
+    function clear() {
+        const canvasSize = cellSize * map.length;
+        ctx.clearRect(0, 0, canvasSize, canvasSize);
+    } 
 }
