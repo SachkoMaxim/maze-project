@@ -160,49 +160,19 @@ function rand(max) {
     }
 
     function defineStartEnd() {
-        switch (rand(4)) {
-            case 0:
-                startCoord = {
-                    x: 0,
-                    y: 0
-                };
-                endCoord = {
-                    x: height - 1,
-                    y: width - 1
-                };
-                break;
-            case 1:
-                startCoord = {
-                    x: 0,
-                    y: width - 1
-                };
-                endCoord = {
-                    x: height - 1,
-                    y: 0
-                };
-                break;
-            case 2:
-                startCoord = {
-                    x: height - 1,
-                    y: 0
-                };
-                endCoord = {
-                    x: 0,
-                    y: width - 1
-                };
-                break;
-            case 3:
-                startCoord = {
-                    x: height - 1,
-                    y: width - 1
-                };
-                endCoord = {
-                    x: 0,
-                    y: 0
-                };
-                break;
-        }
-    }
+        const positions = [
+            { startX: 0, startY: 0, endX: height - 1, endY: width - 1 },
+            { startX: 0, startY: width - 1, endX: height - 1, endY: 0 },
+            { startX: height - 1, startY: 0, endX: 0, endY: width - 1 },
+            { startX: height - 1, startY: width - 1, endX: 0, endY: 0 }
+        ];
+    
+        const randomIndex = Math.floor(Math.random() * positions.length);
+        const { startX, startY, endX, endY } = positions[randomIndex];
+    
+        startCoord = { x: startX, y: startY };
+        endCoord = { x: endX, y: endY };
+    }    
 
     genMap();
     defineStartEnd();
