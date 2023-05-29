@@ -348,4 +348,15 @@ function Player(maze, c, _cellsize, onComplete, sprite = null) {
             player.unbindKeyDown();
         }
     }
+
+    function removeSprite(coord) {
+        const offsetLeft = cellSize / 50;
+        const offsetRight = cellSize / 25;
+        ctx.clearRect(
+            coord.x * cellSize + offsetLeft,
+            coord.y * cellSize + offsetLeft,
+            cellSize - offsetRight,
+            cellSize - offsetRight
+        );
+    }
 }
