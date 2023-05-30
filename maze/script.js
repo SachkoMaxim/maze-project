@@ -359,4 +359,32 @@ function Player(maze, c, _cellsize, onComplete, sprite = null) {
             cellSize - offsetRight
         );
     }
+
+    function check(e) {
+        const cell = map[cellCoords.x][cellCoords.y];
+        moves++;
+        
+        const keyMap = {
+            65: { prop: 'w', x: -1, y: 0 },  // A or left arrow key
+            37: { prop: 'w', x: -1, y: 0 },  // A or left arrow key
+            87: { prop: 'n', x: 0, y: -1 },  // W or up arrow key
+            38: { prop: 'n', x: 0, y: -1 },  // W or up arrow key
+            68: { prop: 'e', x: 1, y: 0 },   // D or right arrow key
+            39: { prop: 'e', x: 1, y: 0 },   // D or right arrow key
+            83: { prop: 's', x: 0, y: 1 },   // S or down arrow key
+            40: { prop: 's', x: 0, y: 1 }    // S or down arrow key
+        };
+      
+        const keyCode = e.keyCode;
+        const key = keyMap[keyCode];
+        
+        if (key && cell[key.prop] === true) {
+            removeSprite(cellCoords);
+            cellCoords = {
+                x: cellCoords.x + key.x,
+                y: cellCoords.y + key.y
+            };
+            drawSprite(cellCoords);
+        }
+    }
 }
