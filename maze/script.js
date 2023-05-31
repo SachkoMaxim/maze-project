@@ -387,4 +387,48 @@ function Player(maze, c, _cellsize, onComplete, sprite = null) {
             drawSprite(cellCoords);
         }
     }
+
+    this.bindKeyDown = function() {
+        window.addEventListener("keydown", check, false);
+      
+        window.addEventListener("touchstart", handleTouchStart, false);
+        window.addEventListener("touchmove", handleTouchMove, false);
+      
+        let xDown = null;
+        let yDown = null;
+      
+        function handleTouchStart(event) {
+            xDown = event.touches[0].clientX;
+            yDown = event.touches[0].clientY;
+        }
+      
+        function handleTouchMove(event) {
+            if (!xDown || !yDown) {
+                return;
+            }
+      
+            const xUp = event.touches[0].clientX;
+            const yUp = event.touches[0].clientY;
+      
+            const xDiff = xDown - xUp;
+            const yDiff = yDown - yUp;
+      
+            if (Math.abs(xDiff) > Math.abs(yDiff)) {
+                if (xDiff > 0) {
+                    check({ keyCode: 37 }); // Left swipe
+                } else {
+                    check({ keyCode: 39 }); // Right swipe
+                }
+            } else {
+                if (yDiff > 0) {
+                    check({ keyCode: 38 }); // Up swipe
+                } else {
+                    check({ keyCode: 40 }); // Down swipe
+                }
+            }
+      
+            xDown = null;
+            yDown = null;
+        }
+    };      
 }
