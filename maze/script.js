@@ -450,5 +450,13 @@ let cellSize;
 let difficulty;
 
 window.onload = function() {
-    
+    let viewWidth = document.getElementById("view").clientWidth;
+    let viewHeight = document.getElementById("view").clientHeight;
+    if (viewHeight < viewWidth) {
+        ctx.canvas.width = viewHeight - viewHeight / 100;
+        ctx.canvas.height = viewHeight - viewHeight / 100;
+    } else {
+        ctx.canvas.width = viewWidth - viewWidth / 100;
+        ctx.canvas.height = viewWidth - viewWidth / 100;
+    }
 }
