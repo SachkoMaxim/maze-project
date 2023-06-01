@@ -448,3 +448,7 @@ let finishSprite;
 let maze, draw, player;
 let cellSize;
 let difficulty;
+
+window.onload = function() {
+    
+}
