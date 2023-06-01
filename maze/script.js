@@ -459,4 +459,16 @@ window.onload = function() {
         ctx.canvas.width = viewWidth - viewWidth / 100;
         ctx.canvas.height = viewWidth - viewWidth / 100;
     }
+
+    // Load and edit sprites
+    let completeOne = false;
+    let completeTwo = false;
+    const isComplete = () => {
+        if (completeOne === true && completeTwo === true) {
+            console.log("Runs");
+            setTimeout(function() {
+                makeMaze();
+            }, 500);
+        }
+    };
 }
