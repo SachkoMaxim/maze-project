@@ -291,27 +291,28 @@ function DrawMaze(Maze, ctx, cellSize, endSprite = null) {
 }
 
 function Player(maze, c, _cellsize, onComplete, sprite = null) {
-    const ctx = c.getContext("2d");
+    const canvas = c;
+    const ctx = canvas.getContext("2d");
     let drawSprite;
     let moves = 0;
     drawSprite = drawSpriteCircle;
     if (sprite != null) {
-      drawSprite = drawSpriteImg;
+        drawSprite = drawSpriteImg;
     }
     const player = this;
     const map = maze.map();
     let cellCoords = {
-      x: maze.startCoord().x,
-      y: maze.startCoord().y
+        x: maze.startCoord().x,
+        y: maze.startCoord().y
     };
     let cellSize = _cellsize;
     const halfCellSize = cellSize / 2;
-    
+  
     this.redrawPlayer = function (_cellsize) {
-      cellSize = _cellsize;
-      drawSpriteImg(cellCoords);
+        cellSize = _cellsize;
+        drawSpriteImg(cellCoords);
     };
-
+  
     function drawSpriteCircle(coord) {
         ctx.beginPath();
         ctx.fillStyle = "yellow";
@@ -328,7 +329,7 @@ function Player(maze, c, _cellsize, onComplete, sprite = null) {
             player.unbindKeyDown();
         }
     }
-
+  
     function drawSpriteImg(coord) {
         const offsetLeft = cellSize / 50;
         const offsetRight = cellSize / 25;
@@ -348,7 +349,7 @@ function Player(maze, c, _cellsize, onComplete, sprite = null) {
             player.unbindKeyDown();
         }
     }
-
+  
     function removeSprite(coord) {
         const offsetLeft = cellSize / 50;
         const offsetRight = cellSize / 25;
@@ -359,25 +360,25 @@ function Player(maze, c, _cellsize, onComplete, sprite = null) {
             cellSize - offsetRight
         );
     }
-
+  
     function check(e) {
         const cell = map[cellCoords.x][cellCoords.y];
         moves++;
-        
+  
         const keyMap = {
-            65: { prop: 'w', x: -1, y: 0 },  // A or left arrow key
-            37: { prop: 'w', x: -1, y: 0 },  // A or left arrow key
-            87: { prop: 'n', x: 0, y: -1 },  // W or up arrow key
-            38: { prop: 'n', x: 0, y: -1 },  // W or up arrow key
-            68: { prop: 'e', x: 1, y: 0 },   // D or right arrow key
-            39: { prop: 'e', x: 1, y: 0 },   // D or right arrow key
-            83: { prop: 's', x: 0, y: 1 },   // S or down arrow key
-            40: { prop: 's', x: 0, y: 1 }    // S or down arrow key
+            65: { prop: "w", x: -1, y: 0 },  // A or left arrow key
+            37: { prop: "w", x: -1, y: 0 },  // A or left arrow key
+            87: { prop: "n", x: 0, y: -1 },  // W or up arrow key
+            38: { prop: "n", x: 0, y: -1 },  // W or up arrow key
+            68: { prop: "e", x: 1, y: 0 },   // D or right arrow key
+            39: { prop: "e", x: 1, y: 0 },   // D or right arrow key
+            83: { prop: "s", x: 0, y: 1 },   // S or down arrow key
+            40: { prop: "s", x: 0, y: 1 }    // S or down arrow key
         };
-      
+  
         const keyCode = e.keyCode;
         const key = keyMap[keyCode];
-        
+  
         if (key && cell[key.prop] === true) {
             removeSprite(cellCoords);
             cellCoords = {
@@ -387,48 +388,55 @@ function Player(maze, c, _cellsize, onComplete, sprite = null) {
             drawSprite(cellCoords);
         }
     }
-
-    this.bindKeyDown = function() {
-        window.addEventListener("keydown", check, false);
-      
-        window.addEventListener("touchstart", handleTouchStart, false);
-        window.addEventListener("touchmove", handleTouchMove, false);
-      
-        let xDown = null;
-        let yDown = null;
-      
-        function handleTouchStart(event) {
-            xDown = event.touches[0].clientX;
-            yDown = event.touches[0].clientY;
+  
+    function handleTouchStart(event) {
+        xDown = event.touches[0].clientX;
+        yDown = event.touches[0].clientY;
+    }
+  
+    function handleTouchMove(event) {
+        if (!xDown || !yDown) {
+            return;
         }
-      
-        function handleTouchMove(event) {
-            if (!xDown || !yDown) {
-                return;
-            }
-      
-            const xUp = event.touches[0].clientX;
-            const yUp = event.touches[0].clientY;
-      
-            const xDiff = xDown - xUp;
-            const yDiff = yDown - yUp;
-      
-            if (Math.abs(xDiff) > Math.abs(yDiff)) {
-                if (xDiff > 0) {
-                    check({ keyCode: 37 }); // Left swipe
-                } else {
-                    check({ keyCode: 39 }); // Right swipe
-                }
+  
+        const xUp = event.touches[0].clientX;
+        const yUp = event.touches[0].clientY;
+  
+        const xDiff = xDown - xUp;
+        const yDiff = yDown - yUp;
+  
+        if (Math.abs(xDiff) > Math.abs(yDiff)) {
+            if (xDiff > 0) {
+                check({ keyCode: 37 }); // Left swipe
             } else {
-                if (yDiff > 0) {
-                    check({ keyCode: 38 }); // Up swipe
-                } else {
-                    check({ keyCode: 40 }); // Down swipe
-                }
+                check({ keyCode: 39 }); // Right swipe
             }
-      
-            xDown = null;
-            yDown = null;
+        } else {
+            if (yDiff > 0) {
+                check({ keyCode: 38 }); // Up swipe
+            } else {
+                check({ keyCode: 40 }); // Down swipe
+            }
         }
-    };      
-}
+  
+        xDown = null;
+        yDown = null;
+    }
+  
+    this.bindKeyDown = function () {
+        window.addEventListener("keydown", check, false);
+  
+        canvas.addEventListener("touchstart", handleTouchStart, false);
+        canvas.addEventListener("touchmove", handleTouchMove, false);
+    };
+  
+    this.unbindKeyDown = function () {
+        window.removeEventListener("keydown", check, false);
+        canvas.removeEventListener("touchstart", handleTouchStart, false);
+        canvas.removeEventListener("touchmove", handleTouchMove, false);
+    };
+  
+    drawSprite(maze.startCoord());
+  
+    this.bindKeyDown();
+}  
