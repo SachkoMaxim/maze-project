@@ -439,4 +439,12 @@ function Player(maze, c, _cellsize, onComplete, sprite = null) {
     drawSprite(maze.startCoord());
   
     this.bindKeyDown();
-}  
+}
+
+const mazeCanvas = document.getElementById("mazeCanvas");
+const ctx = mazeCanvas.getContext("2d");
+let sprite;
+let finishSprite;
+let maze, draw, player;
+let cellSize;
+let difficulty;
