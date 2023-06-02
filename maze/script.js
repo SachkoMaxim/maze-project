@@ -20,9 +20,9 @@ function rand(max) {
     const imgData = context.getImageData(0, 0, 500, 500);
   
     for (let i = 0; i < imgData.data.length; i += 4) {
-      imgData.data[i] = imgData.data[i] * factor;
-      imgData.data[i + 1] = imgData.data[i + 1] * factor;
-      imgData.data[i + 2] = imgData.data[i + 2] * factor;
+      imgData.data[i] *= factor;
+      imgData.data[i + 1] *= factor;
+      imgData.data[i + 2] *= factor;
     }
     context.putImageData(imgData, 0, 0);
   
