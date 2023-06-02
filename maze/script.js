@@ -492,3 +492,8 @@ window.onload = function() {
         isComplete();
     };
 };
+
+window.onresize = function() {
+    let viewWidth = document.getElementById("view").clientWidth;
+    let viewHeight = document.getElementById("view").clientHeight;
+  };
