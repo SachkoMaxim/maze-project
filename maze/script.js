@@ -471,4 +471,14 @@ window.onload = function() {
             }, 500);
         }
     };
+
+    sprite = new Image();
+    sprite.src = "./knight.png" + "?" + new Date().getTime();
+    sprite.setAttribute("crossOrigin", " ");
+    sprite.onload = function() {
+      sprite = changeBrightness(1.2, sprite);
+      completeOne = true;
+      console.log(completeOne);
+      isComplete();
+    };
 }
