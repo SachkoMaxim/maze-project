@@ -476,9 +476,19 @@ window.onload = function() {
     sprite.src = "./knight.png" + "?" + new Date().getTime();
     sprite.setAttribute("crossOrigin", " ");
     sprite.onload = function() {
-      sprite = changeBrightness(1.2, sprite);
-      completeOne = true;
-      console.log(completeOne);
-      isComplete();
+        sprite = changeBrightness(1.2, sprite);
+        completeOne = true;
+        console.log(completeOne);
+        isComplete();
     };
-}
+
+    finishSprite = new Image();
+    finishSprite.src = "./castle.png" + "?" + new Date().getTime();
+    finishSprite.setAttribute("crossOrigin", " ");
+    finishSprite.onload = function() {
+        finishSprite = changeBrightness(1.1, finishSprite);
+        completeTwo = true;
+        console.log(completeTwo);
+        isComplete();
+    };
+};
