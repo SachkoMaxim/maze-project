@@ -509,3 +509,7 @@ window.onresize = function() {
         player.redrawPlayer(cellSize);
     }
 };
+
+function makeMaze() {
+    
+}
