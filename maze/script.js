@@ -179,9 +179,9 @@ function rand(max) {
     defineMaze();
 }
 
-function DrawMaze(Maze, ctx, cellSize, endSprite = null) {
+function DrawMaze(Maze, ctx, cellSized, endSprite = null) {
     let map = Maze.map();
-    let cellSize = cellSize;
+    let cellSize = cellSized;
     let drawEndMethod;
     ctx.lineWidth = cellSize / 40;
 
