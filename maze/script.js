@@ -180,7 +180,7 @@ function rand(max) {
 }
 
 function DrawMaze(Maze, ctx, cellSized, endSprite = null) {
-    let map = Maze.map();
+    const map = Maze.map();
     let cellSize = cellSized;
     let drawEndMethod;
     ctx.lineWidth = cellSize / 40;
