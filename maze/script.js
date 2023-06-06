@@ -1,14 +1,14 @@
-const rand = (max) => Math.floor(Math.random() * max);
+ const rand = (max) => Math.floor(Math.random() * max);
 
-const shuffle = (a) => {
+ const shuffle = (a) => {
   for (let i = a.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
     [a[i], a[j]] = [a[j], a[i]];
   }
   return a;
-};
+ };
  
-const changeBrightness = (factor, sprite) => {
+  const changeBrightness = (factor, sprite) => {
     const virtCanvas = document.createElement("canvas");
     virtCanvas.width = 500;
     virtCanvas.height = 500;
@@ -43,7 +43,7 @@ const changeBrightness = (factor, sprite) => {
     }
   };  
 
- const Maze = (Width, Height) => {
+const Maze = (Width, Height) => {
     let mazeMap;
     const width = Width;
     const height = Height;
@@ -175,7 +175,7 @@ const changeBrightness = (factor, sprite) => {
       beginCoord,
       finishCoord
     };
-  };
+};
 
 function DrawMaze(Maze, ctx, cellSized, endSprite = null) {
     const map = Maze.map();
