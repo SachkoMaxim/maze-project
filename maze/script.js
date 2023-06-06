@@ -303,8 +303,8 @@ const Player = (maze, canvas, _cellsize, onComplete, sprite = null) => {
     const player = this;
     const map = maze.map();
     let cellCoords = {
-        x: maze.startCoord().x,
-        y: maze.startCoord().y
+        x: maze.beginCoord().x,
+        y: maze.beginCoord().y
     };
     let cellSize = _cellsize;
     const halfCellSize = cellSize / 2;
@@ -325,7 +325,7 @@ const Player = (maze, canvas, _cellsize, onComplete, sprite = null) => {
             2 * Math.PI
         );
         ctx.fill();
-        if (coord.x === maze.endCoord().x && coord.y === maze.endCoord().y) {
+        if (coord.x === maze.finishCoord().x && coord.y === maze.finishCoord().y) {
             onComplete(moves);
             player.unbindKeyDown();
         }
@@ -345,7 +345,7 @@ const Player = (maze, canvas, _cellsize, onComplete, sprite = null) => {
             cellSize - offsetRight,
             cellSize - offsetRight
         );
-        if (coord.x === maze.endCoord().x && coord.y === maze.endCoord().y) {
+        if (coord.x === maze.finishCoord().x && coord.y === maze.finishCoord().y) {
             onComplete(moves);
             player.unbindKeyDown();
         }
@@ -437,7 +437,7 @@ const Player = (maze, canvas, _cellsize, onComplete, sprite = null) => {
         canvas.removeEventListener("touchmove", handleTouchMove, false);
     };
 
-    drawSprite(maze.startCoord());
+    drawSprite(maze.beginCoord());
 
     bindKeyDown();
 
