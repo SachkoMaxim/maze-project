@@ -456,68 +456,68 @@ let maze, draw, player;
 let cellSize;
 let difficulty;
 
-window.onload = function() {
+window.onload = () => {
     let viewWidth = document.getElementById("view").clientWidth;
     let viewHeight = document.getElementById("view").clientHeight;
     if (viewHeight < viewWidth) {
-        ctx.canvas.width = viewHeight - viewHeight / 100;
-        ctx.canvas.height = viewHeight - viewHeight / 100;
+      ctx.canvas.width = viewHeight - viewHeight / 100;
+      ctx.canvas.height = viewHeight - viewHeight / 100;
     } else {
-        ctx.canvas.width = viewWidth - viewWidth / 100;
-        ctx.canvas.height = viewWidth - viewWidth / 100;
+      ctx.canvas.width = viewWidth - viewWidth / 100;
+      ctx.canvas.height = viewWidth - viewWidth / 100;
     }
-
+  
     // Load and edit sprites
     let completeOne = false;
     let completeTwo = false;
     const isComplete = () => {
-        if (completeOne === true && completeTwo === true) {
-            console.log("Runs");
-            setTimeout(function() {
-                makeMaze();
-            }, 500);
-        }
+      if (completeOne === true && completeTwo === true) {
+        console.log("Runs");
+        setTimeout(() => {
+          makeMaze();
+        }, 500);
+      }
     };
-
+  
     sprite = new Image();
     sprite.src = "./knight.png" + "?" + new Date().getTime();
     sprite.setAttribute("crossOrigin", " ");
-    sprite.onload = function() {
-        sprite = changeBrightness(1.2, sprite);
-        completeOne = true;
-        console.log(completeOne);
-        isComplete();
+    sprite.onload = () => {
+      sprite = changeBrightness(1.2, sprite);
+      completeOne = true;
+      console.log(completeOne);
+      isComplete();
     };
-
+  
     finishSprite = new Image();
     finishSprite.src = "./castle.png" + "?" + new Date().getTime();
     finishSprite.setAttribute("crossOrigin", " ");
-    finishSprite.onload = function() {
-        finishSprite = changeBrightness(1.1, finishSprite);
-        completeTwo = true;
-        console.log(completeTwo);
-        isComplete();
+    finishSprite.onload = () => {
+      finishSprite = changeBrightness(1.1, finishSprite);
+      completeTwo = true;
+      console.log(completeTwo);
+      isComplete();
     };
 };
-
-window.onresize = function() {
+  
+window.onresize = () => {
     let viewWidth = document.getElementById("view").clientWidth;
     let viewHeight = document.getElementById("view").clientHeight;
     if (viewHeight < viewWidth) {
-        ctx.canvas.width = viewHeight - viewHeight / 100;
-        ctx.canvas.height = viewHeight - viewHeight / 100;
+      ctx.canvas.width = viewHeight - viewHeight / 100;
+      ctx.canvas.height = viewHeight - viewHeight / 100;
     } else {
-        ctx.canvas.width = viewWidth - viewWidth / 100;
-        ctx.canvas.height = viewWidth - viewWidth / 100;
+      ctx.canvas.width = viewWidth - viewWidth / 100;
+      ctx.canvas.height = viewWidth - viewWidth / 100;
     }
     cellSize = mazeCanvas.width / difficulty;
     if (player != null) {
-        draw.redrawMaze(cellSize);
-        player.redrawPlayer(cellSize);
+      draw.redrawMaze(cellSize);
+      player.redrawPlayer(cellSize);
     }
 };
-
-function makeMaze() {
+  
+const makeMaze = () => {
     if (player !== undefined) {
       player.unbindKeyDown();
       player = null;
@@ -531,4 +531,4 @@ function makeMaze() {
     if (document.getElementById("mazeContainer").style.opacity < "100") {
       document.getElementById("mazeContainer").style.opacity = "100";
     }
-  }
+};  
