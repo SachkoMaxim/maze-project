@@ -8,7 +8,7 @@ const shuffle = (a) => {
   return a;
 };
  
- function changeBrightness(factor, sprite) {
+const changeBrightness = (factor, sprite) => {
     const virtCanvas = document.createElement("canvas");
     virtCanvas.width = 500;
     virtCanvas.height = 500;
@@ -28,20 +28,20 @@ const shuffle = (a) => {
     spriteOutput.src = virtCanvas.toDataURL();
     virtCanvas.remove();
     return spriteOutput;
-  }  
-
- function displayVictoryMess(moves) {
+  };
+  
+  const displayVictoryMess = moves => {
     document.getElementById("moves").innerHTML = "You Moved " + moves + " Steps.";
-    toggleVisablity("Message-Container");
- }
-
- function toggleVisablity(id) {
-    if (document.getElementById(id).style.visibility == "visible") {
-        document.getElementById(id).style.visibility = "hidden";
+    toggleVisibility("Message-Container");
+  };
+  
+  const toggleVisibility = id => {
+    if (document.getElementById(id).style.visibility === "visible") {
+      document.getElementById(id).style.visibility = "hidden";
     } else {
-        document.getElementById(id).style.visibility = "visible";
+      document.getElementById(id).style.visibility = "visible";
     }
- }
+  };  
 
  const Maze = (Width, Height) => {
     let mazeMap;
