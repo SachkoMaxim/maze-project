@@ -43,7 +43,7 @@
     }
   };  
 
-const Maze = (Width, Height) => {
+  const Maze = (Width, Height) => {
     let mazeMap;
     const width = Width;
     const height = Height;
@@ -53,23 +53,23 @@ const Maze = (Width, Height) => {
       n: {
         y: -1,
         x: 0,
-        o: "s"
+        o: "s",
       },
       s: {
         y: 1,
         x: 0,
-        o: "n"
+        o: "n",
       },
       e: {
         y: 0,
         x: 1,
-        o: "w"
+        o: "w",
       },
       w: {
         y: 0,
         x: -1,
-        o: "e"
-      }
+        o: "e",
+      },
     };
   
     const map = () => mazeMap;
@@ -80,14 +80,14 @@ const Maze = (Width, Height) => {
       mazeMap = new Array(height);
       for (let y = 0; y < height; y++) {
         mazeMap[y] = new Array(width);
-        for (let x = 0; x < width; ++x) {
+        for (let x = 0; x < width; x++) {
           mazeMap[y][x] = {
             n: false,
             s: false,
             e: false,
             w: false,
             visited: false,
-            priorPos: null
+            priorPos: null,
           };
         }
       }
@@ -101,12 +101,12 @@ const Maze = (Width, Height) => {
       let maxLoops = 0;
       let pos = {
         x: 0,
-        y: 0
+        y: 0,
       };
       const numCells = width * height;
       while (!isComp) {
         move = false;
-        mazeMap[pos.x][pos.y].visited = true;
+        mazeMap[pos.y][pos.x].visited = true;
   
         if (numLoops >= maxLoops) {
           shuffle(dirs);
@@ -120,21 +120,21 @@ const Maze = (Width, Height) => {
           const ny = pos.y + modDir[direction].y;
   
           if (nx >= 0 && nx < width && ny >= 0 && ny < height) {
-            //To check if the title is visited
-            if (!mazeMap[nx][ny].visited) {
-              //Carve through walls from this title to next
-              mazeMap[pos.x][pos.y][direction] = true;
-              mazeMap[nx][ny][modDir[direction].o] = true;
+            // To check if the tile is visited
+            if (!mazeMap[ny][nx].visited) {
+              // Carve through walls from this tile to next
+              mazeMap[pos.y][pos.x][direction] = true;
+              mazeMap[ny][nx][modDir[direction].o] = true;
   
-              //Set Currentcell as next cell's prior visited
-              mazeMap[nx][ny].priorPos = pos;
-              //Update Cell position to newly visited location
+              // Set Current cell as next cell's prior visited
+              mazeMap[ny][nx].priorPos = pos;
+              // Update Cell position to newly visited location
               pos = {
                 x: nx,
-                y: ny
+                y: ny,
               };
               cellsVisited++;
-              //Recursively call this method on the next tile
+              // Recursively call this method on the next tile
               move = true;
               break;
             }
@@ -142,8 +142,8 @@ const Maze = (Width, Height) => {
         }
   
         if (!move) {
-          // If it failed to find a direction, move to the current position back to the prior cell and recall the method
-          pos = mazeMap[pos.x][pos.y].priorPos;
+          // If it failed to find a direction, move the current position back to the prior cell and recall the method
+          pos = mazeMap[pos.y][pos.x].priorPos;
         }
         if (numCells === cellsVisited) {
           isComp = true;
@@ -156,14 +156,14 @@ const Maze = (Width, Height) => {
         { startX: 0, startY: 0, endX: height - 1, endY: width - 1 },
         { startX: 0, startY: width - 1, endX: height - 1, endY: 0 },
         { startX: height - 1, startY: 0, endX: 0, endY: width - 1 },
-        { startX: height - 1, startY: width - 1, endX: 0, endY: 0 }
+        { startX: height - 1, startY: width - 1, endX: 0, endY: 0 },
       ];
   
       const randomIndex = Math.floor(Math.random() * positions.length);
       const { startX, startY, endX, endY } = positions[randomIndex];
   
-      startCoord = { x: startX, y: startY };
-      endCoord = { x: endX, y: endY };
+      startCoord = { x: startY, y: startX };
+      endCoord = { x: endY, y: endX };
     };
   
     genMap();
@@ -173,7 +173,7 @@ const Maze = (Width, Height) => {
     return {
       map,
       beginCoord,
-      finishCoord
+      finishCoord,
     };
 };
 
@@ -518,17 +518,17 @@ window.onresize = function() {
 };
 
 function makeMaze() {
-    if (player != undefined) {
-        player.unbindKeyDown();
-        player = null;
+    if (player !== undefined) {
+      player.unbindKeyDown();
+      player = null;
     }
     const e = document.getElementById("diffSelect");
-    difficulty = e.options[e.selectedIndex].value;
+    difficulty = parseInt(e.options[e.selectedIndex].value);
     cellSize = mazeCanvas.width / difficulty;
     maze = new Maze(difficulty, difficulty);
     draw = new DrawMaze(maze, ctx, cellSize, finishSprite);
     player = new Player(maze, mazeCanvas, cellSize, displayVictoryMess, sprite);
     if (document.getElementById("mazeContainer").style.opacity < "100") {
-        document.getElementById("mazeContainer").style.opacity = "100";
+      document.getElementById("mazeContainer").style.opacity = "100";
     }
-}
+  }
