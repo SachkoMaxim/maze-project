@@ -177,9 +177,10 @@
     };
 };
 
-const DrawMaze = (Maze, ctx, cellSize, endSprite = null) => {
+const DrawMaze = (Maze, ctx, cellSized, endSprite = null) => {
     const map = Maze.map();
     ctx.lineWidth = cellSize / 40;
+    let cellSize = cellSized;
   
     const redrawMaze = (size) => {
       cellSize = size;
