@@ -446,7 +446,7 @@ let maze, draw, player;
 let cellSize;
 let difficulty;
 
-window.onload = function() {
+window.onload = () => {
   let viewWidth = document.getElementById("view").clientWidth;
   let viewHeight = document.getElementById("view").clientHeight;
   if (viewHeight < viewWidth) {
@@ -490,7 +490,7 @@ window.onload = function() {
   };
 };
 
-window.onresize = function() {
+window.onresize = () => {
   let viewWidth = document.getElementById("view").clientWidth;
   let viewHeight = document.getElementById("view").clientHeight;
   if (viewHeight < viewWidth) {
@@ -507,7 +507,7 @@ window.onresize = function() {
   }
 };
 
-function makeMaze() {
+const makeMaze = () => {
   if (player != undefined) {
       player.unbindKeyDown();
       player = null;
@@ -521,4 +521,4 @@ function makeMaze() {
   if (document.getElementById("mazeContainer").style.opacity < "100") {
       document.getElementById("mazeContainer").style.opacity = "100";
   }
-}
+};
