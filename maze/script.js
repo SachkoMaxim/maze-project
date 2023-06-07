@@ -305,7 +305,7 @@ function Player(maze, canvas, _cellsize, onComplete, sprite = null) {
   let cellSize = _cellsize;
   const halfCellSize = cellSize / 2;
 
-  this.redrawPlayer = function (_cellsize) {
+  this.redrawPlayer = (_cellsize) => {
       cellSize = _cellsize;
       drawSpriteImg(cellCoords);
   };
