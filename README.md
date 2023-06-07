@@ -92,12 +92,12 @@ To open game you need to:
 
     * After reaching the end, click the 'Cool!' button. Then switch the difficulty, if you want, and click 'Start' button. The maze will redraw and you begin a new game. You can play until you became bored.
 
-# Help
+## Help
 <hr>
 
 Ask questions at https://t.me/BL_OD and post issues on GitHub.
 
-# License
+## License
 <hr>
 
 [MIT License](LICENSE)
