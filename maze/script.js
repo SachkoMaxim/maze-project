@@ -361,14 +361,10 @@ function player(labyrinth, canvas, cellSized, onComplete, sprite = null) {
       moves++;
 
       const keyMap = {
-          65: { prop: "w", x: -1, y: 0 },  // A or left arrow key
-          37: { prop: "w", x: -1, y: 0 },  // A or left arrow key
-          87: { prop: "n", x: 0, y: -1 },  // W or up arrow key
-          38: { prop: "n", x: 0, y: -1 },  // W or up arrow key
-          68: { prop: "e", x: 1, y: 0 },   // D or right arrow key
-          39: { prop: "e", x: 1, y: 0 },   // D or right arrow key
-          83: { prop: "s", x: 0, y: 1 },   // S or down arrow key
-          40: { prop: "s", x: 0, y: 1 }    // S or down arrow key
+          65: { prop: "w", x: -1, y: 0 },  // A button to go left
+          87: { prop: "n", x: 0, y: -1 },  // W button to go up
+          68: { prop: "e", x: 1, y: 0 },   // D button to go right
+          83: { prop: "s", x: 0, y: 1 },   // S button to go down
       };
 
       const keyCode = e.keyCode;
@@ -402,15 +398,15 @@ function player(labyrinth, canvas, cellSized, onComplete, sprite = null) {
 
       if (Math.abs(xDiff) > Math.abs(yDiff)) {
           if (xDiff > 0) {
-              check({ keyCode: 37 }); // Left swipe
+              check({ keyCode: 65 }); // Left swipe
           } else {
-              check({ keyCode: 39 }); // Right swipe
+              check({ keyCode: 68 }); // Right swipe
           }
       } else {
           if (yDiff > 0) {
-              check({ keyCode: 38 }); // Up swipe
+              check({ keyCode: 87 }); // Up swipe
           } else {
-              check({ keyCode: 40 }); // Down swipe
+              check({ keyCode: 83 }); // Down swipe
           }
       }
 
