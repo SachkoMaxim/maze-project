@@ -8,7 +8,7 @@ const shuffle = (a) => {
   return a;
 };
 
-function changeBrightness(factor, sprite) {
+const changeBrightness = (factor, sprite) => {
   const virtCanvas = document.createElement("canvas");
   virtCanvas.width = 500;
   virtCanvas.height = 500;
@@ -28,7 +28,7 @@ function changeBrightness(factor, sprite) {
   spriteOutput.src = virtCanvas.toDataURL();
   virtCanvas.remove();
   return spriteOutput;
-}
+};
 
 function displayVictoryMess(moves) {
   document.getElementById("moves").innerHTML = "You Moved " + moves + " Steps.";
