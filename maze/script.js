@@ -192,16 +192,28 @@ function drawMaze(labyrinth, ctx, cellSized, endSprite = null) {
       let x = xCord * cellSize;
       let y = yCord * cellSize;
       if (cell.n == false) {
-        ctx.fillRect(x, y, cellSize, ctx.lineWidth);
+          ctx.beginPath();
+          ctx.moveTo(x, y);
+          ctx.lineTo(x + cellSize, y);
+          ctx.stroke();
       }
       if (cell.s === false) {
-        ctx.fillRect(x, y + cellSize - ctx.lineWidth, cellSize, ctx.lineWidth);
+          ctx.beginPath();
+          ctx.moveTo(x, y + cellSize);
+          ctx.lineTo(x + cellSize, y + cellSize);
+          ctx.stroke();
       }
       if (cell.e === false) {
-        ctx.fillRect(x + cellSize - ctx.lineWidth, y, ctx.lineWidth, cellSize);
+          ctx.beginPath();
+          ctx.moveTo(x + cellSize, y);
+          ctx.lineTo(x + cellSize, y + cellSize);
+          ctx.stroke();
       }
       if (cell.w === false) {
-        ctx.fillRect(x, y, ctx.lineWidth, cellSize);
+          ctx.beginPath();
+          ctx.moveTo(x, y);
+          ctx.lineTo(x, y + cellSize);
+          ctx.stroke();
       }
   };
 
