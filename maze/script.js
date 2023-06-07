@@ -387,6 +387,9 @@ const Player = (maze, canvas, _cellsize, onComplete, sprite = null) => {
         }
     };
 
+    let xDown;
+    let yDown;
+
     const handleTouchStart = (event) => {
         xDown = event.touches[0].clientX;
         yDown = event.touches[0].clientY;
