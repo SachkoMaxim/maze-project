@@ -183,14 +183,14 @@ function DrawMaze(Maze, ctx, cellSized, endSprite = null) {
   let drawEndMethod;
   ctx.lineWidth = cellSize / 40;
 
-  this.redrawMaze = function(size) {
+  this.redrawMaze = (size) => {
       cellSize = size;
       ctx.lineWidth = cellSize / 50;
       drawMap();
       drawEndMethod();
   };
 
-  function drawCell(xCord, yCord, cell) {
+  const drawCell = (xCord, yCord, cell) => {
       let x = xCord * cellSize;
       let y = yCord * cellSize;
       if (cell.n == false) {
@@ -217,17 +217,17 @@ function DrawMaze(Maze, ctx, cellSized, endSprite = null) {
           ctx.lineTo(x, y + cellSize);
           ctx.stroke();
       }
-  }
+  };
 
-  function drawMap() {
+  const drawMap = () => {
       for (let x = 0; x < map.length; x++) {
           for (let y = 0; y < map[x].length; y++) {
               drawCell(x, y, map[x][y]);
           }
       }
-  }
+  };
 
-  function drawEndFlag() {
+  const drawEndFlag = () => {
       let coord = Maze.endCoord();
       let gridSize = 4;
       let fraction = cellSize / gridSize - 2;
@@ -253,9 +253,9 @@ function DrawMaze(Maze, ctx, cellSized, endSprite = null) {
               colorSwap = !colorSwap;
           }
       }
-  }
+  };
 
-  function drawEndSprite() {
+  const drawEndSprite = () => {
       let offsetLeft = cellSize / 50;
       let offsetRight = cellSize / 25;
       let coord = Maze.endCoord();
@@ -270,12 +270,12 @@ function DrawMaze(Maze, ctx, cellSized, endSprite = null) {
           cellSize - offsetRight,
           cellSize - offsetRight
       );
-  }
+  };
   
-  function clear() {
+  const clear = () => {
       const canvasSize = cellSize * map.length;
       ctx.clearRect(0, 0, canvasSize, canvasSize);
-  }
+  };
   
   if (endSprite != null) {
       drawEndMethod = drawEndSprite;
