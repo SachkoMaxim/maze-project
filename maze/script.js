@@ -288,164 +288,154 @@ function DrawMaze(Maze, ctx, cellSized, endSprite = null) {
   drawEndMethod();
 }
 
-class Player {
-  constructor(maze, canvas, _cellsize, onComplete, sprite = null) {
-    this.ctx = canvas.getContext("2d");
-    this.drawSprite = this.drawSpriteCircle;
-    this.moves = 0;
-
-    if (sprite != null) {
-      this.drawSprite = this.drawSpriteImg;
-    }
-
-    this.player = this;
-    this.map = maze.map();
-    this.cellCoords = {
+function Player(maze, canvas, _cellsize, onComplete, sprite = null) {
+  const ctx = canvas.getContext("2d");
+  let drawSprite;
+  let moves = 0;
+  drawSprite = drawSpriteCircle;
+  if (sprite != null) {
+      drawSprite = drawSpriteImg;
+  }
+  const player = this;
+  const map = maze.map();
+  let cellCoords = {
       x: maze.startCoord().x,
       y: maze.startCoord().y
-    };
-    this.cellSize = _cellsize;
-    this.halfCellSize = this.cellSize / 2;
-    this.onComplete = onComplete;
-    this.sprite = sprite;
+  };
+  let cellSize = _cellsize;
+  const halfCellSize = cellSize / 2;
 
-    this.drawSprite(this.cellCoords);
-    this.bindKeyDown();
+  this.redrawPlayer = function (_cellsize) {
+      cellSize = _cellsize;
+      drawSpriteImg(cellCoords);
+  };
+
+  function drawSpriteCircle(coord) {
+      ctx.beginPath();
+      ctx.fillStyle = "yellow";
+      ctx.arc(
+          (coord.x + 1) * cellSize - halfCellSize,
+          (coord.y + 1) * cellSize - halfCellSize,
+          halfCellSize - 2,
+          0,
+          2 * Math.PI
+      );
+      ctx.fill();
+      if (coord.x === maze.endCoord().x && coord.y === maze.endCoord().y) {
+          onComplete(moves);
+          player.unbindKeyDown();
+      }
   }
 
-  redrawPlayer(_cellsize) {
-    this.cellSize = _cellsize;
-    this.drawSpriteImg(this.cellCoords);
+  function drawSpriteImg(coord) {
+      const offsetLeft = cellSize / 50;
+      const offsetRight = cellSize / 25;
+      ctx.drawImage(
+          sprite,
+          0,
+          0,
+          sprite.width,
+          sprite.height,
+          coord.x * cellSize + offsetLeft,
+          coord.y * cellSize + offsetLeft,
+          cellSize - offsetRight,
+          cellSize - offsetRight
+      );
+      if (coord.x === maze.endCoord().x && coord.y === maze.endCoord().y) {
+          onComplete(moves);
+          player.unbindKeyDown();
+      }
   }
 
-  drawSpriteCircle(coord) {
-    this.ctx.beginPath();
-    this.ctx.fillStyle = "yellow";
-    this.ctx.arc(
-      (coord.x + 1) * this.cellSize - this.halfCellSize,
-      (coord.y + 1) * this.cellSize - this.halfCellSize,
-      this.halfCellSize - 2,
-      0,
-      2 * Math.PI
-    );
-    this.ctx.fill();
-    if (
-      coord.x === this.map.endCoord().x &&
-      coord.y === this.map.endCoord().y
-    ) {
-      this.onComplete(this.moves);
-      this.player.unbindKeyDown();
-    }
+  function removeSprite(coord) {
+      const offsetLeft = cellSize / 50;
+      const offsetRight = cellSize / 25;
+      ctx.clearRect(
+          coord.x * cellSize + offsetLeft,
+          coord.y * cellSize + offsetLeft,
+          cellSize - offsetRight,
+          cellSize - offsetRight
+      );
   }
 
-  drawSpriteImg(coord) {
-    const offsetLeft = this.cellSize / 50;
-    const offsetRight = this.cellSize / 25;
-    this.ctx.drawImage(
-      this.sprite,
-      0,
-      0,
-      this.sprite.width,
-      this.sprite.height,
-      coord.x * this.cellSize + offsetLeft,
-      coord.y * this.cellSize + offsetLeft,
-      this.cellSize - offsetRight,
-      this.cellSize - offsetRight
-    );
-    if (
-      coord.x === this.map.endCoord().x &&
-      coord.y === this.map.endCoord().y
-    ) {
-      this.onComplete(this.moves);
-      this.player.unbindKeyDown();
-    }
-  }
+  function check(e) {
+      const cell = map[cellCoords.x][cellCoords.y];
+      moves++;
 
-  removeSprite(coord) {
-    const offsetLeft = this.cellSize / 50;
-    const offsetRight = this.cellSize / 25;
-    this.ctx.clearRect(
-      coord.x * this.cellSize + offsetLeft,
-      coord.y * this.cellSize + offsetLeft,
-      this.cellSize - offsetRight,
-      this.cellSize - offsetRight
-    );
-  }
-
-  check(e) {
-    const cell = this.map[this.cellCoords.x][this.cellCoords.y];
-    this.moves++;
-
-    const keyMap = {
-      65: { prop: "w", x: -1, y: 0 }, // A or left arrow key
-      37: { prop: "w", x: -1, y: 0 }, // A or left arrow key
-      87: { prop: "n", x: 0, y: -1 }, // W or up arrow key
-      38: { prop: "n", x: 0, y: -1 }, // W or up arrow key
-      68: { prop: "e", x: 1, y: 0 }, // D or right arrow key
-      39: { prop: "e", x: 1, y: 0 }, // D or right arrow key
-      83: { prop: "s", x: 0, y: 1 }, // S or down arrow key
-      40: { prop: "s", x: 0, y: 1 } // S or down arrow key
-    };
-
-    const keyCode = e.keyCode;
-    const key = keyMap[keyCode];
-
-    if (key && cell[key.prop] === true) {
-      this.removeSprite(this.cellCoords);
-      this.cellCoords = {
-        x: this.cellCoords.x + key.x,
-        y: this.cellCoords.y + key.y
+      const keyMap = {
+          65: { prop: "w", x: -1, y: 0 },  // A or left arrow key
+          37: { prop: "w", x: -1, y: 0 },  // A or left arrow key
+          87: { prop: "n", x: 0, y: -1 },  // W or up arrow key
+          38: { prop: "n", x: 0, y: -1 },  // W or up arrow key
+          68: { prop: "e", x: 1, y: 0 },   // D or right arrow key
+          39: { prop: "e", x: 1, y: 0 },   // D or right arrow key
+          83: { prop: "s", x: 0, y: 1 },   // S or down arrow key
+          40: { prop: "s", x: 0, y: 1 }    // S or down arrow key
       };
-      this.drawSprite(this.cellCoords);
-    }
-  }
 
-  handleTouchStart(event) {
-    this.xDown = event.touches[0].clientX;
-    this.yDown = event.touches[0].clientY;
-  }
+      const keyCode = e.keyCode;
+      const key = keyMap[keyCode];
 
-  handleTouchMove(event) {
-    if (!this.xDown || !this.yDown) {
-      return;
-    }
-
-    const xUp = event.touches[0].clientX;
-    const yUp = event.touches[0].clientY;
-
-    const xDiff = this.xDown - xUp;
-    const yDiff = this.yDown - yUp;
-
-    if (Math.abs(xDiff) > Math.abs(yDiff)) {
-      if (xDiff > 0) {
-        this.check({ keyCode: 37 }); // Left swipe
-      } else {
-        this.check({ keyCode: 39 }); // Right swipe
+      if (key && cell[key.prop] === true) {
+          removeSprite(cellCoords);
+          cellCoords = {
+              x: cellCoords.x + key.x,
+              y: cellCoords.y + key.y
+          };
+          drawSprite(cellCoords);
       }
-    } else {
-      if (yDiff > 0) {
-        this.check({ keyCode: 38 }); // Up swipe
-      } else {
-        this.check({ keyCode: 40 }); // Down swipe
+  }
+
+  function handleTouchStart(event) {
+      xDown = event.touches[0].clientX;
+      yDown = event.touches[0].clientY;
+  }
+
+  function handleTouchMove(event) {
+      if (!xDown || !yDown) {
+          return;
       }
-    }
 
-    this.xDown = null;
-    this.yDown = null;
+      const xUp = event.touches[0].clientX;
+      const yUp = event.touches[0].clientY;
+
+      const xDiff = xDown - xUp;
+      const yDiff = yDown - yUp;
+
+      if (Math.abs(xDiff) > Math.abs(yDiff)) {
+          if (xDiff > 0) {
+              check({ keyCode: 37 }); // Left swipe
+          } else {
+              check({ keyCode: 39 }); // Right swipe
+          }
+      } else {
+          if (yDiff > 0) {
+              check({ keyCode: 38 }); // Up swipe
+          } else {
+              check({ keyCode: 40 }); // Down swipe
+          }
+      }
+
+      xDown = null;
+      yDown = null;
   }
 
-  bindKeyDown() {
-    window.addEventListener("keydown", this.check, false);
+  this.bindKeyDown = function () {
+      window.addEventListener("keydown", check, false);
 
-    canvas.addEventListener("touchstart", this.handleTouchStart, false);
-    canvas.addEventListener("touchmove", this.handleTouchMove, false);
-  }
+      canvas.addEventListener("touchstart", handleTouchStart, false);
+      canvas.addEventListener("touchmove", handleTouchMove, false);
+  };
 
-  unbindKeyDown() {
-    window.removeEventListener("keydown", this.check, false);
-    canvas.removeEventListener("touchstart", this.handleTouchStart, false);
-    canvas.removeEventListener("touchmove", this.handleTouchMove, false);
-  }
+  this.unbindKeyDown = function () {
+      window.removeEventListener("keydown", check, false);
+      canvas.removeEventListener("touchstart", handleTouchStart, false);
+      canvas.removeEventListener("touchmove", handleTouchMove, false);
+  };
+
+  drawSprite(maze.startCoord());
+
+  this.bindKeyDown();
 }
 
 const mazeCanvas = document.getElementById("mazeCanvas");
