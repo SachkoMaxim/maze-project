@@ -183,7 +183,7 @@ function drawMaze(labyrinth, ctx, cellSized, endSprite = null) {
 
   this.redrawMaze = (size) => {
       cellSize = size;
-      ctx.lineWidth = cellSize / 40;
+      ctx.lineWidth = cellSize / 30;
       drawMap();
       drawEndMethod();
   };
