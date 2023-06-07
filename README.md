@@ -1,4 +1,4 @@
-# maze-project
+# Maze-project
 
 This project is maze. It created by using JavaScript, HTML, CSS, node JS.
 
@@ -68,12 +68,12 @@ To open game you need to:
 **How to play the game?**
 
   * *To create the maze:*
-
+    * 
         Click on the button labeled 'Easy'. Choose between 'Easy', 'Medium', 'Hard' and 'Extreme' difficulties.
         Then click on the 'Start' button and the maze will be created.
 
   * *To play the game:*
-        
+    * 
         * **On phone:**
             Swipe your finger where you want to direct the player (knight).
 
@@ -85,11 +85,11 @@ To open game you need to:
               * **D** - move the player to the right.
     
   * *Goal:*
-
+    * 
         You need to reach to the end point - to the castle.
 
   * *If reached the end:*
-  
+    * 
         After reaching the end, click the 'Cool!' button. Then switch the difficulty, if you want, and click 'Start' button. The maze will redraw and you begin a new game. You can play until you became bored.
 
 ### Help
