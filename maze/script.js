@@ -179,11 +179,11 @@ function drawMaze(labyrinth, ctx, cellSized, endSprite = null) {
   const map = labyrinth.map();
   let cellSize = cellSized;
   let drawEndMethod;
-  ctx.lineWidth = cellSize / 40;
+  ctx.lineWidth = cellSize / 30;
 
   this.redrawMaze = (size) => {
       cellSize = size;
-      ctx.lineWidth = cellSize / 50;
+      ctx.lineWidth = cellSize / 40;
       drawMap();
       drawEndMethod();
   };
