@@ -30,18 +30,18 @@ const changeBrightness = (factor, sprite) => {
   return spriteOutput;
 };
 
-function displayVictoryMess(moves) {
+const displayVictoryMess =(moves) => {
   document.getElementById("moves").innerHTML = "You Moved " + moves + " Steps.";
   toggleVisablity("Message-Container");
-}
+};
 
-function toggleVisablity(id) {
+const toggleVisablity = (id) => {
   if (document.getElementById(id).style.visibility == "visible") {
       document.getElementById(id).style.visibility = "hidden";
   } else {
       document.getElementById(id).style.visibility = "visible";
   }
-}
+};
 
 function Maze(Width, Height) {
   let mazeMap;
