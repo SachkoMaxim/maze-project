@@ -72,17 +72,17 @@ function Maze(Width, Height) {
       }
   };
 
-  this.map = function() {
+  this.map = () => {
       return mazeMap;
   };
-  this.startCoord = function() {
+  this.startCoord = () => {
       return startCoord;
   };
-  this.endCoord = function() {
+  this.endCoord = () => {
       return endCoord;
   };
 
-  function genMap() {
+  const genMap = () => {
       mazeMap = new Array(height);
       for (let y = 0; y < height; y++) {
           mazeMap[y] = new Array(width);
@@ -97,9 +97,9 @@ function Maze(Width, Height) {
               };
           }
       }
-  }
+  };
 
-  function defineMaze() {
+  const defineMaze = () => {
       let isComp = false;
       let move = false;
       let cellsVisited = 1;
@@ -155,9 +155,9 @@ function Maze(Width, Height) {
               isComp = true;
           }
       }
-  }
+  };
 
-  function defineStartEnd() {
+  const defineStartEnd = () => {
       const positions = [
           { startX: 0, startY: 0, endX: height - 1, endY: width - 1 },
           { startX: 0, startY: width - 1, endX: height - 1, endY: 0 },
@@ -170,7 +170,7 @@ function Maze(Width, Height) {
   
       startCoord = { x: startX, y: startY };
       endCoord = { x: endX, y: endY };
-  }
+  };
 
   genMap();
   defineStartEnd();
