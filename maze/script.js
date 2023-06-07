@@ -310,7 +310,7 @@ function Player(maze, canvas, _cellsize, onComplete, sprite = null) {
       drawSpriteImg(cellCoords);
   };
 
-  const drawSpriteCircle = function (coord) {
+  function drawSpriteCircle(coord) {
       ctx.beginPath();
       ctx.fillStyle = "yellow";
       ctx.arc(
@@ -325,9 +325,9 @@ function Player(maze, canvas, _cellsize, onComplete, sprite = null) {
           onComplete(moves);
           player.unbindKeyDown();
       }
-  };
+  }
 
-  const drawSpriteImg = function (coord) {
+  function drawSpriteImg(coord) {
       const offsetLeft = cellSize / 50;
       const offsetRight = cellSize / 25;
       ctx.drawImage(
@@ -345,9 +345,9 @@ function Player(maze, canvas, _cellsize, onComplete, sprite = null) {
           onComplete(moves);
           player.unbindKeyDown();
       }
-  };
+  }
 
-  const removeSprite = function(coord) {
+  function removeSprite(coord) {
       const offsetLeft = cellSize / 50;
       const offsetRight = cellSize / 25;
       ctx.clearRect(
@@ -356,9 +356,9 @@ function Player(maze, canvas, _cellsize, onComplete, sprite = null) {
           cellSize - offsetRight,
           cellSize - offsetRight
       );
-  };
+  }
 
-  const check = function(e) {
+  function check(e) {
       const cell = map[cellCoords.x][cellCoords.y];
       moves++;
 
@@ -384,14 +384,14 @@ function Player(maze, canvas, _cellsize, onComplete, sprite = null) {
           };
           drawSprite(cellCoords);
       }
-  };
+  }
 
-  const handleTouchStart = function(event) {
+  function handleTouchStart(event) {
       xDown = event.touches[0].clientX;
       yDown = event.touches[0].clientY;
-  };
+  }
 
-  const handleTouchMove = function(event) {
+  function handleTouchMove(event) {
       if (!xDown || !yDown) {
           return;
       }
@@ -418,7 +418,7 @@ function Player(maze, canvas, _cellsize, onComplete, sprite = null) {
 
       xDown = null;
       yDown = null;
-  };
+  }
 
   this.bindKeyDown = function () {
       window.addEventListener("keydown", check, false);
