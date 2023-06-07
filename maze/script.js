@@ -245,7 +245,7 @@ function drawMaze(labyrinth, ctx, cellSized, endSprite = null) {
               if (colorSwap) {
                   ctx.fillStyle = "rgba(0, 0, 0, 0.8)";
               } else {
-                  ctx.fillStyle = "rgba(255, 255, 255, 0.8)";
+                  ctx.fillStyle = "rgba(255, 255, 255, 1.5)";
               }
               ctx.fill();
               colorSwap = !colorSwap;
