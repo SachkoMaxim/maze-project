@@ -73,7 +73,7 @@ function Maze(Width, Height) {
           o: "e"
       }
   };
-  
+
   this.map = function() {
       return mazeMap;
   };
@@ -290,8 +290,7 @@ function DrawMaze(Maze, ctx, cellSized, endSprite = null) {
   drawEndMethod();
 }
 
-function Player(maze, c, _cellsize, onComplete, sprite = null) {
-  const canvas = c;
+function Player(maze, canvas, _cellsize, onComplete, sprite = null) {
   const ctx = canvas.getContext("2d");
   let drawSprite;
   let moves = 0;
