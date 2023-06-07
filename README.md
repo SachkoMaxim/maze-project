@@ -2,7 +2,7 @@
 
 This project is maze. It created by using JavaScript, HTML, CSS, node JS.
 
-### What can this maze project provide you?
+## What can this maze project provide you?
 <hr>
 
 * problem-solving skills
@@ -10,7 +10,7 @@ This project is maze. It created by using JavaScript, HTML, CSS, node JS.
 * educational tool
 * fun and entertainment
 
-### How does this project work?
+## How does this project work?
 <hr>
 
 - ***There are several helper functions such as:***
@@ -51,7 +51,7 @@ This project is maze. It created by using JavaScript, HTML, CSS, node JS.
     * handles the initialization of the maze game. It sets up the canvas dimensions, loads the sprite;
     * **'drawMaze'** - defines event handlers and initializes the maze drawing based on user actions.
 
-### How to open the game and play it?
+## How to open the game and play it?
 <hr>
 
 > **NOTE:** you don't need to have node js on your machine
@@ -67,15 +67,15 @@ To open game you need to:
 
 **How to play the game?**
 
-  * ## To create the maze:
+  * ### To create the maze:
     * Click on the button labeled 'Easy'. Choose between 'Easy', 'Medium', 'Hard' and 'Extreme' difficulties. Then click on the 'Start' button and the maze will be created.
 
-  * ## To play the game:
+  * ### To play the game:
 
-    * # On phone:
+    * ### On phone:
         * Swipe your finger where you want to direct the player (knight).
 
-    * # On computer, laptop:
+    * ### On computer, laptop:
 
         * Use W, A, S, D to move the player (knight):
 
@@ -84,20 +84,20 @@ To open game you need to:
             * S - move the player to the down;
             * D - move the player to the right.
     
-  * ## Goal:
+  * ### Goal:
 
     * You need to reach to the end point - to the castle.
 
-  * ## If reached the end:
+  * ### If reached the end:
 
     * After reaching the end, click the 'Cool!' button. Then switch the difficulty, if you want, and click 'Start' button. The maze will redraw and you begin a new game. You can play until you became bored.
 
-### Help
+# Help
 <hr>
 
 Ask questions at https://t.me/BL_OD and post issues on GitHub.
 
-### License
+# License
 <hr>
 
 [MIT License](LICENSE)
