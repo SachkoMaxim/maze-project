@@ -368,10 +368,10 @@ const Player = (maze, canvas, _cellsize, onComplete, sprite = null) => {
         moves++;
 
         const keyMap = {
-            37: { prop: "w", x: -1, y: 0 },  // left arrow key
-            38: { prop: "n", x: 0, y: -1 },  // up arrow key
-            39: { prop: "e", x: 1, y: 0 },   // right arrow key
-            40: { prop: "s", x: 0, y: 1 }    // down arrow key
+          ArrowLeft: { prop: "w", x: -1, y: 0 },  // left arrow key
+          ArrowUp: { prop: "n", x: 0, y: -1 },  // up arrow key
+          ArrowRight: { prop: "e", x: 1, y: 0 },   // right arrow key
+          ArrowDown: { prop: "s", x: 0, y: 1 }    // down arrow key
         };
 
         const keyCode = e.keyCode;
@@ -408,15 +408,15 @@ const Player = (maze, canvas, _cellsize, onComplete, sprite = null) => {
 
         if (Math.abs(xDiff) > Math.abs(yDiff)) {
             if (xDiff > 0) {
-                check({ keyCode: 37 }); // Left swipe
+                check({ keyCode: ArrowLeft }); // Left swipe
             } else {
-                check({ keyCode: 39 }); // Right swipe
+                check({ keyCode: ArrowRight }); // Right swipe
             }
         } else {
             if (yDiff > 0) {
-                check({ keyCode: 38 }); // Up swipe
+                check({ keyCode: ArrowUp }); // Up swipe
             } else {
-                check({ keyCode: 40 }); // Down swipe
+                check({ keyCode: ArrowDown }); // Down swipe
             }
         }
 
