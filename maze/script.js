@@ -30,7 +30,7 @@ const changeBrightness = (factor, sprite) => {
   return spriteOutput;
 };
 
-const displayVictoryMess =(moves) => {
+const displayVictoryMess = (moves) => {
   document.getElementById("moves").innerHTML = "You Moved " + moves + " Steps.";
   toggleVisablity("Message-Container");
 };
@@ -43,10 +43,8 @@ const toggleVisablity = (id) => {
   }
 };
 
-function Maze(Width, Height) {
+function maze (width, height) {
   let mazeMap;
-  const width = Width;
-  const height = Height;
   let startCoord, endCoord;
   const dirs = ["n", "s", "e", "w"];
   const modDir = {
@@ -177,8 +175,8 @@ function Maze(Width, Height) {
   defineMaze();
 }
 
-function DrawMaze(Maze, ctx, cellSized, endSprite = null) {
-  const map = Maze.map();
+function drawMaze(labyrinth, ctx, cellSized, endSprite = null) {
+  const map = labyrinth.map();
   let cellSize = cellSized;
   let drawEndMethod;
   ctx.lineWidth = cellSize / 40;
@@ -228,7 +226,7 @@ function DrawMaze(Maze, ctx, cellSized, endSprite = null) {
   };
 
   const drawEndFlag = () => {
-      let coord = Maze.endCoord();
+      let coord = labyrinth.endCoord();
       let gridSize = 4;
       let fraction = cellSize / gridSize - 2;
       let colorSwap = true;
@@ -258,7 +256,7 @@ function DrawMaze(Maze, ctx, cellSized, endSprite = null) {
   const drawEndSprite = () => {
       let offsetLeft = cellSize / 50;
       let offsetRight = cellSize / 25;
-      let coord = Maze.endCoord();
+      let coord = labyrinth.endCoord();
       ctx.drawImage(
           endSprite,
           2,
@@ -288,7 +286,7 @@ function DrawMaze(Maze, ctx, cellSized, endSprite = null) {
   drawEndMethod();
 }
 
-function Player(maze, canvas, _cellsize, onComplete, sprite = null) {
+function player(labyrinth, canvas, cellSized, onComplete, sprite = null) {
   const ctx = canvas.getContext("2d");
   let drawSprite;
   let moves = 0;
@@ -296,17 +294,17 @@ function Player(maze, canvas, _cellsize, onComplete, sprite = null) {
   if (sprite != null) {
       drawSprite = drawSpriteImg;
   }
-  const player = this;
-  const map = maze.map();
+  const gamer = this;
+  const map = labyrinth.map();
   let cellCoords = {
-      x: maze.startCoord().x,
-      y: maze.startCoord().y
+      x: labyrinth.startCoord().x,
+      y: labyrinth.startCoord().y
   };
-  let cellSize = _cellsize;
+  let cellSize = cellSized;
   const halfCellSize = cellSize / 2;
 
-  this.redrawPlayer = (_cellsize) => {
-      cellSize = _cellsize;
+  this.redrawPlayer = (cellSized) => {
+      cellSize = cellSized;
       drawSpriteImg(cellCoords);
   };
 
@@ -321,9 +319,9 @@ function Player(maze, canvas, _cellsize, onComplete, sprite = null) {
           2 * Math.PI
       );
       ctx.fill();
-      if (coord.x === maze.endCoord().x && coord.y === maze.endCoord().y) {
+      if (coord.x === labyrinth.endCoord().x && coord.y === labyrinth.endCoord().y) {
           onComplete(moves);
-          player.unbindKeyDown();
+          gamer.unbindKeyDown();
       }
   }
 
@@ -341,9 +339,9 @@ function Player(maze, canvas, _cellsize, onComplete, sprite = null) {
           cellSize - offsetRight,
           cellSize - offsetRight
       );
-      if (coord.x === maze.endCoord().x && coord.y === maze.endCoord().y) {
+      if (coord.x === labyrinth.endCoord().x && coord.y === labyrinth.endCoord().y) {
           onComplete(moves);
-          player.unbindKeyDown();
+          gamer.unbindKeyDown();
       }
   }
 
@@ -433,7 +431,7 @@ function Player(maze, canvas, _cellsize, onComplete, sprite = null) {
       canvas.removeEventListener("touchmove", handleTouchMove, false);
   };
 
-  drawSprite(maze.startCoord());
+  drawSprite(labyrinth.startCoord());
 
   this.bindKeyDown();
 }
@@ -442,7 +440,7 @@ const mazeCanvas = document.getElementById("mazeCanvas");
 const ctx = mazeCanvas.getContext("2d");
 let sprite;
 let finishSprite;
-let maze, draw, player;
+let labyrinth, draw, gamer;
 let cellSize;
 let difficulty;
 
@@ -501,23 +499,23 @@ window.onresize = () => {
       ctx.canvas.height = viewWidth - viewWidth / 100;
   }
   cellSize = mazeCanvas.width / difficulty;
-  if (player != null) {
+  if (gamer != null) {
       draw.redrawMaze(cellSize);
-      player.redrawPlayer(cellSize);
+      gamer.redrawPlayer(cellSize);
   }
 };
 
 const makeMaze = () => {
-  if (player != undefined) {
-      player.unbindKeyDown();
-      player = null;
+  if (gamer != undefined) {
+      gamer.unbindKeyDown();
+      gamer = null;
   }
   const e = document.getElementById("diffSelect");
   difficulty = e.options[e.selectedIndex].value;
   cellSize = mazeCanvas.width / difficulty;
-  maze = new Maze(difficulty, difficulty);
-  draw = new DrawMaze(maze, ctx, cellSize, finishSprite);
-  player = new Player(maze, mazeCanvas, cellSize, displayVictoryMess, sprite);
+  labyrinth = new maze(difficulty, difficulty);
+  draw = new drawMaze(labyrinth, ctx, cellSize, finishSprite);
+  gamer = new player(labyrinth, mazeCanvas, cellSize, displayVictoryMess, sprite);
   if (document.getElementById("mazeContainer").style.opacity < "100") {
       document.getElementById("mazeContainer").style.opacity = "100";
   }
