@@ -68,7 +68,7 @@ To open game you need to:
 **How to play the game?**
 
   * ## To create the maze:
-        Click on the button labeled 'Easy'. Choose between 'Easy', 'Medium', 'Hard' and 'Extreme' difficulties. Then click on the 'Start' button and the maze will be created.
+    * Click on the button labeled 'Easy'. Choose between 'Easy', 'Medium', 'Hard' and 'Extreme' difficulties. Then click on the 'Start' button and the maze will be created.
 
   * ## To play the game:
 
@@ -78,19 +78,19 @@ To open game you need to:
     * # On computer, laptop:
 
         * Use W, A, S, D to move the player (knight):
-<pr>
-                W - move the player to the up;
-                A - move the player to the left;
-                S - move the player to the down;
-                D - move the player to the right.
+
+            * W - move the player to the up;
+            * A - move the player to the left;
+            * S - move the player to the down;
+            * D - move the player to the right.
     
   * ## Goal:
-   
+
     * You need to reach to the end point - to the castle.
 
   * ## If reached the end:
 
-        After reaching the end, click the 'Cool!' button. Then switch the difficulty, if you want, and click 'Start' button. The maze will redraw and you begin a new game. You can play until you became bored.
+    * After reaching the end, click the 'Cool!' button. Then switch the difficulty, if you want, and click 'Start' button. The maze will redraw and you begin a new game. You can play until you became bored.
 
 ### Help
 <hr>
