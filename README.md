@@ -52,7 +52,7 @@ This project is maze. It created by using JavaScript, HTML, CSS, node JS.
     * **'drawMaze'** - defines event handlers and initializes the maze drawing based on user actions.
 
 ### How to open the game and play it?
-<pr>
+<hr>
 
 > **NOTE:** you don't need to have node js on your machine
 
@@ -67,32 +67,30 @@ To open game you need to:
 
 **How to play the game?**
 
-  * *To create the maze:*
-<pr>
-Click on the button labeled 'Easy'. Choose between 'Easy', 'Medium', 'Hard' and 'Extreme' difficulties. Then click on the 'Start' button and the maze will be created.
+  * ## To create the maze:
+        Click on the button labeled 'Easy'. Choose between 'Easy', 'Medium', 'Hard' and 'Extreme' difficulties. Then click on the 'Start' button and the maze will be created.
 
-  * *To play the game:*
+  * ## To play the game:
+
+    * # On phone:
+        * Swipe your finger where you want to direct the player (knight).
+
+    * # On computer, laptop:
+
+        * Use W, A, S, D to move the player (knight):
 <pr>
-On phone:
-<pr>
-    Swipe your finger where you want to direct the player (knight).
-<pr>
-On computer, laptop:
-<pr>
-    Use W, A, S, D to move the player (knight):
-<pr>
-        W - move the player to the up;<pr>
-        A - move the player to the left;<pr>
-        S - move the player to the down;<pr>
-        D - move the player to the right.
+                W - move the player to the up;
+                A - move the player to the left;
+                S - move the player to the down;
+                D - move the player to the right.
     
-  * *Goal:*
-<pr> 
-You need to reach to the end point - to the castle.
+  * ## Goal:
+   
+    * You need to reach to the end point - to the castle.
 
-  * *If reached the end:*
-<pr>
-After reaching the end, click the 'Cool!' button. Then switch the difficulty, if you want, and click 'Start' button. The maze will redraw and you begin a new game. You can play until you became bored.
+  * ## If reached the end:
+
+        After reaching the end, click the 'Cool!' button. Then switch the difficulty, if you want, and click 'Start' button. The maze will redraw and you begin a new game. You can play until you became bored.
 
 ### Help
 <hr>
