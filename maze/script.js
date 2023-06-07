@@ -375,12 +375,20 @@ function player(labyrinth, canvas, cellSized, onComplete, sprite = null) {
       const key = keyMap[keyCode];
 
       if (key && cell[key.prop] === true) {
-          removeSprite(cellCoords);
-          cellCoords = {
-              x: cellCoords.x + key.x,
-              y: cellCoords.y + key.y
-          };
-          drawSprite(cellCoords);
+          const nx = cellCoords.x + key.x;
+          const ny = cellCoords.y + key.y;
+          if (nx >= 0 && nx < map.length && ny >= 0 && ny < map[nx].length) {
+            const nextCell = map[nx][ny];
+
+            if (nextCell[key.prop] === true) {
+              removeSprite(cellCoords);
+              cellCoords = {
+                x: cellCoords.x + key.x,
+                y: cellCoords.y + key.y
+              };
+            drawSprite(cellCoords);
+          }
+        }
       }
   }
 
