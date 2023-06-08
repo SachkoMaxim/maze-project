@@ -69,15 +69,21 @@ To open game you need to:
 
   * #### *To create the maze*:
 
-    Click on the button labeled **`Easy`**. Choose between **`Easy`**, **`Medium`**, **`Hard`** and **`Extreme`** difficulties. Then click on the **`Start`** button and the maze will be created.
+    Click on the button labeled **`Easy`**. ![image](https://github.com/SachkoMaxim/maze-project/assets/114748761/bf0e5522-de80-43f9-a93e-36b3426879c9)
+
+    Choose between **`Easy`**, **`Medium`**, **`Hard`** and **`Extreme`** difficulties. ![image](https://github.com/SachkoMaxim/maze-project/assets/114748761/41270147-07f4-4867-8dac-4c913fa7b789)
+    
+    Then click on the **`Start`** button. ![image](https://github.com/SachkoMaxim/maze-project/assets/114748761/ea885a67-be44-4abc-9ffe-c398fbfd7e0a)
+
+    The maze will be created.
 
   * #### *To play the game*:
 
-    * On phone:
+    * ***On phone***:
 
         Swipe your finger where you want to direct the player (knight).
 
-    * On computer, laptop:
+    * ***On computer, laptop***:
 
         Use W, A, S, D buttons to move the player (knight):
 
@@ -92,7 +98,9 @@ To open game you need to:
 
   * #### *If reached the end*:
 
-    After reaching the end, click the **`Cool!`** button. Then switch the difficulty, if you want, and click 'Start' button. The maze will redraw and you begin a new game. You can play until you became bored.
+    After reaching the end, click the **`Cool!`** button. ![image](https://github.com/SachkoMaxim/maze-project/assets/114748761/a3fd0075-0141-4001-bfe0-4237901a663c)
+    
+    Then switch the difficulty, if you want, and click 'Start' button. The maze will redraw and you begin a new game. You can play until you became bored.
 
 ### Help
 <hr>
