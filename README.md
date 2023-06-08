@@ -69,7 +69,21 @@ To open game you need to:
 
   * #### *To create the maze*:
 
-    Click on the button labeled **`Easy`**. Choose between **`Easy`**, **`Medium`**, **`Hard`** and **`Extreme`** difficulties. Then click on the **`Start`** button and the maze will be created.
+    Click on the button labeled **`Easy`**.
+    
+    ![image](https://github.com/SachkoMaxim/maze-project/assets/114748761/e0fa103b-3af0-494a-8e9b-4da6fa4d10b5)
+    
+    Choose between **`Easy`**, **`Medium`**, **`Hard`** and **`Extreme`** difficulties.
+    
+    ![image](https://github.com/SachkoMaxim/maze-project/assets/114748761/751ae82b-5156-4efd-8f51-af1f6e204d16)
+    
+    Then click on the **`Start`** button.
+    
+    ![image](https://github.com/SachkoMaxim/maze-project/assets/114748761/64f40ba4-3011-4737-9bda-cf1a822efbcd)
+    
+    And the maze will be created.
+    
+    ![image](https://github.com/SachkoMaxim/maze-project/assets/114748761/1269cdcc-d359-434f-9175-2a534b29a71c)
 
   * #### *To play the game*:
 
@@ -92,7 +106,11 @@ To open game you need to:
 
   * #### *If reached the end*:
 
-    After reaching the end, click the **`Cool!`** button. Then switch the difficulty, if you want, and click 'Start' button. The maze will redraw and you begin a new game. You can play until you became bored.
+    After reaching the end, click the **`Cool!`** button. 
+    
+    ![image](https://github.com/SachkoMaxim/maze-project/assets/114748761/59628e57-5610-4c54-a701-36f6142a7b94)
+    
+    Then switch the difficulty, if you want, and click **`Start`** button. The maze will redraw and you begin a new game. You can play until you became bored.
 
 ### Help
 <hr>
