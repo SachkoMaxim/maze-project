@@ -92,7 +92,7 @@ To open game you need to:
 
   * #### *If reached the end*:
 
-    After reaching the end, click the **`Cool!`** button. Then switch the difficulty, if you want, and click **`Start`** button. The maze will redraw and you begin a new game. You can play until you became bored.
+    After reaching the end, click the **`Cool!`** button. Then switch the difficulty, if you want, and click 'Start' button. The maze will redraw and you begin a new game. You can play until you became bored.
 
 ### Help
 <hr>
