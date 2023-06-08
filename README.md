@@ -15,7 +15,7 @@ This project is maze. It created by using JavaScript, HTML, CSS, node JS.
 
 - ***There are several helper functions such as:***
     - ```rand```  - generates random numbers; 
-    - ```**shuffle**``` - shuffle arrays, 
+    - ```shuffle``` - shuffle arrays, 
     - ```changeBrightness``` - change brightness of an image;
     - ```displayVictoryMess``` - display victory message; 
     - ```toggleVisablity``` - toggle visibility of an HTML element.
@@ -37,7 +37,7 @@ This project is maze. It created by using JavaScript, HTML, CSS, node JS.
 
 - ***The player function:*** 
     - ```player``` - creates a new player object. It takes a maze object, a canvas element, cell size, a callback function for when the player reaches the end, and an optional sprite as parameters. Inside the constructor, it initializes the player's position, cell size, and draws the player on the canvas.
-        1. ```redrawPlayer`` - allows the player to be redrawn with a different cell size.
+        1. ```redrawPlayer``` - allows the player to be redrawn with a different cell size.
         2. ```drawSpriteCircle``` - used to draw the player as a circle on the canvas.
         3. ```drawSpriteImg``` - used to draw the player using an image sprite on the canvas.
         4. ```removeSprite``` - used to clear the player's previous position on the canvas.
@@ -54,12 +54,12 @@ This project is maze. It created by using JavaScript, HTML, CSS, node JS.
 ### How to open the game and play it?
 <hr>
 
-> **NOTE:** you don't need to have node js on your machine
+> **NOTE:** you don't need to have Node.js on your machine
 
 **How to open the game?**
 
 To open game you need to:
-* write an URL-adress sachkomaxim.github.io/maze-project/maze/
+* write an URL-adress: sachkomaxim.github.io/maze-project/maze/
     
     *or*
 
@@ -67,31 +67,32 @@ To open game you need to:
 
 **How to play the game?**
 
-  * #### To create the maze:
-  
+  * #### *To create the maze*:
+
     Click on the button labeled **`Easy`**. Choose between **`Easy`**, **`Medium`**, **`Hard`** and **`Extreme`** difficulties. Then click on the **`Start`** button and the maze will be created.
 
-  * #### To play the game:
+  * #### *To play the game*:
 
     * On phone:
+
         Swipe your finger where you want to direct the player (knight).
 
     * On computer, laptop:
 
-        Use W, A, S, D to move the player (knight):
+        Use W, A, S, D buttons to move the player (knight):
 
-        * W - move the player to the up;
-        * A - move the player to the left;
-        * S - move the player to the down;
-        * D - move the player to the right.
+        * **W** - move the player to the up;
+        * **A** - move the player to the left;
+        * **S** - move the player to the down;
+        * **D** - move the player to the right.
     
-  * #### Goal:
+  * #### *Goal*:
 
     You need to reach to the end point - to the castle.
 
-  * #### If reached the end:
+  * #### *If reached the end*:
 
-    After reaching the end, click the 'Cool!' button. Then switch the difficulty, if you want, and click 'Start' button. The maze will redraw and you begin a new game. You can play until you became bored.
+    After reaching the end, click the **`Cool!`** button. Then switch the difficulty, if you want, and click 'Start' button. The maze will redraw and you begin a new game. You can play until you became bored.
 
 ### Help
 <hr>
