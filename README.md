@@ -75,11 +75,11 @@ To open game you need to:
 
     * On phone:
 
-        Swipe your finger where you want to direct the player (knight).
+        Swipe your finger where you want to direct the player (spartan).
 
     * On computer, laptop:
 
-        Use W, A, S, D buttons to move the player (knight):
+        Use W, A, S, D buttons to move the player (spartan):
 
         * **W** - move the player to the up;
         * **A** - move the player to the left;
@@ -88,11 +88,11 @@ To open game you need to:
     
   * #### *Goal*:
 
-    You need to reach to the end point - to the castle.
+    You need to reach to the end point - to the temple.
 
   * #### *If reached the end*:
 
-    After reaching the end, click the **`Cool!`** button. Then switch the difficulty, if you want, and click 'Start' button. The maze will redraw and you begin a new game. You can play until you became bored.
+    After reaching the end, click the **`Cool!`** button. Then switch the difficulty, if you want, and click **`Start`** button. The maze will redraw and you begin a new game. You can play until you became bored.
 
 ### Help
 <hr>

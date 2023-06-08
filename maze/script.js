@@ -464,7 +464,7 @@ window.onload = () => {
   };
 
   sprite = new Image();
-  sprite.src = "./knight.png" + "?" + new Date().getTime();
+  sprite.src = "./spartan.png" + "?" + new Date().getTime();
   sprite.setAttribute("crossOrigin", " ");
   sprite.onload = function() {
       sprite = changeBrightness(1.2, sprite);
@@ -474,7 +474,7 @@ window.onload = () => {
   };
 
   finishSprite = new Image();
-  finishSprite.src = "./castle.png" + "?" + new Date().getTime();
+  finishSprite.src = "./temple.png" + "?" + new Date().getTime();
   finishSprite.setAttribute("crossOrigin", " ");
   finishSprite.onload = function() {
       finishSprite = changeBrightness(1.1, finishSprite);
