@@ -326,8 +326,8 @@ function player(labyrinth, canvas, cellSized, onComplete, sprite = null) {
   }
 
   function drawSpriteImg(coord) {
-      const offsetLeft = cellSize / 50;
-      const offsetRight = cellSize / 25;
+      const offsetLeft = cellSize / 48;
+      const offsetRight = cellSize / 23;
       ctx.drawImage(
           sprite,
           0,
@@ -346,8 +346,8 @@ function player(labyrinth, canvas, cellSized, onComplete, sprite = null) {
   }
 
   function removeSprite(coord) {
-      const offsetLeft = cellSize / 50;
-      const offsetRight = cellSize / 25;
+      const offsetLeft = cellSize / 48;
+      const offsetRight = cellSize / 23;
       ctx.clearRect(
           coord.x * cellSize + offsetLeft,
           coord.y * cellSize + offsetLeft,
